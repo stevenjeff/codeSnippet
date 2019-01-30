@@ -1,5 +1,7 @@
 package org.fangrui;
 
+import java.util.stream.Collectors;
+
 public class Test {
 
 	public static void main(String[] args) {
@@ -15,10 +17,9 @@ public class Test {
 	public static void a() {
 //		StackWalker stack = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
 //		stack.forEach(System.out::println);
-		java.lang.StackWalker
-		 .getInstance(java.lang.StackWalker.Option.RETAIN_CLASS_REFERENCE)
-		 .walk(s -> s.skip(1).limit(1).collect(Collectors.toList()))
-		 .forEach(System.out::println);//第一次运行，注释掉
+		java.lang.StackWalker.getInstance(java.lang.StackWalker.Option.RETAIN_CLASS_REFERENCE)
+		.walk(s -> s.skip(1).limit(1).collect(Collectors.toList()))
+		.forEach(System.out::println);
 	}
 
 	public static void b() {
