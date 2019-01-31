@@ -6,4 +6,5 @@
  *
  */
 module CodeSnippet {
+	requires junit;
 }
