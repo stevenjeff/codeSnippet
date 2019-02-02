@@ -1,15 +1,47 @@
 '''
-Created on 2019Äê2ÔÂ2ÈÕ
-
 @author: admin
 '''
 from fabric import Connection
 def main():
-    # ip ÎÒÊÇËæ±ãÌîµÄ
-    # Èç¹ûÄãµÄµçÄÔÅäÁËsshÃâÃÜÂëµÇÂ¼£¬¾Í²»ĞèÒª connect_kwargs À´Ö¸¶¨ÃÜÂëÁË¡£
+    # ip ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    # ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sshï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½Òª connect_kwargs ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¡ï¿½
     c = Connection("root@232.231.231.22", connect_kwargs={"password": "youpassword"})
     with c.cd('/var/www/youproject'):
         c.run("git pull origin master")
         c.run("/usr/bin/supervisorctl -c ../supervisor/supervisord.conf restart youproject")
+
+def pythonic():
+    #  åˆ—è¡¨æ¨å¯¼å¼
+    chars = [c for c in 'python']
+    print(chars)
+    #å­—å…¸æ¨å¯¼å¼
+    dicts ={'a':1,'b':2,'c':3,'d':4,'e':5}
+    newDict ={k:v*3 for (k,v) in dicts.items()}
+    print(newDict)
+    #é›†åˆæ¨å¯¼å¼
+    sets = {1,2,3,4,5,6,7}
+    new_sets = {i*4 for i in sets}
+    print(new_sets)
+    #åˆå¹¶å­—å…¸
+    dict_a = {'a':1,'b':3}
+    dict_b = {'c':2,'d':4}
+    dict_all = {**dict_a,**dict_b}
+    print(dict_all)
+    #å¤åˆ¶åˆ—è¡¨
+    nums = [1,2,3,5]
+    new_nums = nums[::]
+    nums2 = nums
+    nums =[3,4,5,6]
+    print(new_nums)
+    print(nums2)
+    print(nums)
+    #åè½¬åˆ—è¡¨
+    reverse_nums = [1,2,3,4,5,6]
+    reverse_nums = reverse_nums[::-1]
+    print(reverse_nums)
+    #å˜é‡äº¤æ¢
+    a,b = 1,2
+    a,b = b,a
+    print(a+":"+b)
 if __name__ == '__main__':
-     main()
+     pythonic()
