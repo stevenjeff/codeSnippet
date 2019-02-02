@@ -32,6 +32,7 @@ public class Test {
 			    assertTrue("Was not canceled", cf.cancel(true));
 			    assertTrue("Was not completed exceptionally", cf.isCompletedExceptionally());
 			    assertEquals("canceled message", cf2.join());
+			    assertEquals("canceled message", cf2.join());
 	}
 
 	public static void b() {
