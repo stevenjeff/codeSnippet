@@ -2,6 +2,7 @@
 @author: admin
 '''
 from fabric import Connection
+from _collections import defaultdict
 def main():
     # ip ����������
     # �����ĵ�������ssh�������¼���Ͳ���Ҫ connect_kwargs ��ָ�������ˡ�
@@ -42,6 +43,76 @@ def pythonic():
     #变量交换
     a,b = 1,2
     a,b = b,a
-    print(a+":"+b)
+    print(f'{a}:{b}')
+    # 高级拆包
+    a,*b,c = 1,2,3,4,5,6
+    print(b)
+    #函数返回多个值（其实是自动packing成元组）然后unpacking赋值给4个变量
+    def f():
+        return 1,2,3,4,5
+    a,b,c,d,e = f()
+    print(f'{a} ,{b} ,{c} ,{d}, {e}')
+    # 列表合并成字符串
+    temp = " ".join(["I","Love","Python"]);
+    print(temp)
+    # 链式比较
+    if a > 2 and a < 5:
+        pass
+    if 2<a<5:
+        pass
+    # 字典代替多个if else
+    def fun(x):
+        if x == 'a':
+            return 1
+        elif x == 'b':
+            return 2
+        else:
+            return None
+    def funDict(x):
+        return {"a":1,"b":2}.get(x)
+    print(fun('d'))
+    # 有下标索引的枚举
+    for i,e in enumerate(["a","b","c"]):
+        print(i,e)
+    # 生成器
+    g = (i ** 2 for i in range(5))
+    print(g)
+    for i in g:
+        print(i)
+    # 默认字典 defaultdict
+    d = dict()
+    # d['nums'] error
+    d = defaultdict(list)
+    print(d["nums"])
+    # 列表中出现次数最多的元素
+    nums = [1,2,3,3]
+    maxcount = max(set(nums),key=nums.count)
+    print(maxcount)
+    # 读写文件
+    with open("text.txt","w") as f:
+        f.writelines("hello")
+    # 判断对象类型，可指定多个类型
+    print(isinstance(maxcount, (int,str)))
+    # 类似的还有字符串的 startswith，endswith
+    temp = "http://foolish.net".startswith(("http","https"))
+    print(temp)
+    # 使用装饰器
+    def makebold(f):
+        return lambda:'<b>'+f()+'</b>'
+    def makeitalic(f):
+        return lambda:'<i>'+f()+'</b>'
+    @makebold
+    @makeitalic
+    def sayHello():
+        return "hello world"
+    print(sayHello())
+    def equalTest():
+        f = Foo();
+        print(f == None)
+        print(f is None)
+    equalTest()
+class Foo(object):
+    def __eq__(self, other):
+        return True
 if __name__ == '__main__':
      pythonic()
