@@ -14,7 +14,7 @@ public class Test {
 //		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 //		System.out.println(stackTraceElements);
 //		new Exception().printStackTrace();
-		c();
+		multiline();
 	}
 	
 	public static void a() {
@@ -37,5 +37,18 @@ public class Test {
 
 	public static void b() {
 		a();
+	}
+	
+	public static void multiline() {
+		var multiline = "This\r\nis a\r\nmultiline\r\nstring";
+		multiline.lines()
+		    // we now have a `Stream<String>`
+		    .map(line -> "// " + line)
+		    .forEach(System.out::println);
+				// OUTPUT:
+				// This
+				// is a
+				// multiline
+				// string
 	}
 }
