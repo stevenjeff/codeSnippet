@@ -115,4 +115,4 @@ class Foo(object):
     def __eq__(self, other):
         return True
 if __name__ == '__main__':
-     pythonic()
+    pythonic()
