@@ -1,8 +1,11 @@
 '''
 @author: admin
 '''
-from fabric import Connection
 from _collections import defaultdict
+from string import Template
+
+from fabric import Connection
+
 def main():
     # ip ����������
     # �����ĵ�������ssh�������¼���Ͳ���Ҫ connect_kwargs ��ָ�������ˡ�
@@ -111,6 +114,29 @@ def pythonic():
         print(f == None)
         print(f is None)
     equalTest()
+    def stringOperate():
+        print('Hello' + ' ' + 'World' + '!')
+        strlist = ['Hello', ' ', 'World', '!']
+        print(''.join(strlist))
+        print('{} {}!'.format('Hello', 'World'))
+        print('%s %s!' % ('Hello', 'World'))
+        str = (
+            'Hello'
+            ' '
+            'World'
+            '!'
+            )
+        print(str)
+        s = Template('${s1} ${s2} !') 
+        print(s.safe_substitute(s1='Hello',s2='World'))
+        s1 = 'Hello'
+        s2 = 'World'
+        print(f'{s1} {s2}   !')
+        def power(x):
+            return x*x
+        x = 6
+        print(f'{x} * {x} = {power(x)}')
+    stringOperate()
 class Foo(object):
     def __eq__(self, other):
         return True
