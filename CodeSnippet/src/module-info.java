@@ -7,4 +7,5 @@
  */
 module CodeSnippet {
 	requires junit;
+	requires trove4j;
 }

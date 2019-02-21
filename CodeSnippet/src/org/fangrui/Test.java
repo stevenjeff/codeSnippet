@@ -3,9 +3,12 @@ package org.fangrui;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+
+import gnu.trove.list.array.TIntArrayList;
 
 public class Test {
 
@@ -15,6 +18,7 @@ public class Test {
 //		System.out.println(stackTraceElements);
 //		new Exception().printStackTrace();
 		multiline();
+		mapTest();
 	}
 	
 	public static void a() {
@@ -40,7 +44,7 @@ public class Test {
 	}
 	
 	public static void multiline() {
-		var multiline = "This\r\nis a\r\nmultiline\r\nstring";
+		var multiline = "This     \r\nis a\r\nmultiline\r\nstring".strip();
 		multiline.lines()
 		    // we now have a `Stream<String>`
 		    .map(line -> "// " + line)
@@ -50,5 +54,16 @@ public class Test {
 				// is a
 				// multiline
 				// string
+	}
+	
+	public static void mapTest() {
+		TIntArrayList intList = new TIntArrayList();
+		intList.add(1);
+		intList.add(1);
+		intList.add(1);
+		intList.add(1);
+		for (int i = 0; i < intList.size(); i++) {
+			System.out.println(i);
+		}
 	}
 }
