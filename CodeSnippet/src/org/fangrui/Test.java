@@ -1,14 +1,13 @@
 package org.fangrui;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import gnu.trove.list.array.TIntArrayList;
 
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import gnu.trove.list.array.TIntArrayList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Test {
 
@@ -37,6 +36,7 @@ public class Test {
 			    assertTrue("Was not completed exceptionally", cf.isCompletedExceptionally());
 			    assertEquals("canceled message", cf2.join());
 			    assertEquals("canceled message", cf2.join());
+
 	}
 
 	public static void b() {
