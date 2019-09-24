@@ -19,7 +19,7 @@ public class Test {
 		multiline();
 		mapTest();
 	}
-	
+
 	public static void a() {
 //		StackWalker stack = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
 //		stack.forEach(System.out::println);
@@ -27,7 +27,7 @@ public class Test {
 		.walk(s -> s.skip(1).limit(1).collect(Collectors.toList()))
 		.forEach(System.out::println);
 	}
-	
+
 	public static void c() {
 		CompletableFuture cf = CompletableFuture.completedFuture("message").thenApplyAsync(String::toUpperCase,
 			    CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
@@ -42,7 +42,7 @@ public class Test {
 	public static void b() {
 		a();
 	}
-	
+
 	public static void multiline() {
 		var multiline = "This     \r\nis a\r\nmultiline\r\nstring".strip();
 		multiline.lines()
@@ -55,7 +55,7 @@ public class Test {
 				// multiline
 				// string
 	}
-	
+
 	public static void mapTest() {
 		TIntArrayList intList = new TIntArrayList();
 		intList.add(1);
