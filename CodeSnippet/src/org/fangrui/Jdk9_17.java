@@ -280,13 +280,21 @@ public class Jdk9_17 {
     }
 
     /**
-     * 19.打包工具jpackage ZGC并发栈处理，弹性meta space
+     * 19.打包工具jpackage (jdk14)
+     * ZGC并发栈处理，弹性meta space
      * 集合加强（list.of()，map.of()，copyof等只读集合的快速创建），
      * 用List.of的List自然是不包含null，而用Arrays.asList的List包含null
      * List.of生成的List不能修改，Arrays.asList生成的List能修改
      * JDK11的Optional加强,InputStream.transferTo，
      * HTTP Client API正式版，很多时候可以抛弃apache http client了，
      * JDK16的Stream().toList()
+     * jpackage
+     * https://docs.oracle.com/en/java/javase/14/docs/specs/man/jpackage.html
+     * jpackage --runtime-image image --type dmg --name Sunflower --module red.lixiang.tools.desktopmain/com.platform.tools.desktop.DesktopMain
+     * --runtime-image 后面跟的是文件夹, 就是我们build目录下的image文件夹
+     * --type 打成什么样的包, 在mac系统中有 app-image , dmg , pkg三个选项, windows的我没试,应该是有exe选项
+     * --name 软件的名字, 这里是Sunflower(向日葵)
+     * --moudle 模块的名字,相当于以前的Main函数的格式,这里换成了模块 '包名'/Main函数名
      */
 
     public static void main(String[] args) {
