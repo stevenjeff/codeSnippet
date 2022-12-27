@@ -8,7 +8,10 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
 import java.util.TreeMap;
+import java.util.stream.IntStream;
 
 /**
  * 1.jshell
@@ -297,8 +300,27 @@ public class Jdk9_17 {
      * --moudle 模块的名字,相当于以前的Main函数的格式,这里换成了模块 '包名'/Main函数名
      */
 
+    /**
+     * 改进的 Stream API
+     *
+     * 长期以来，Stream API 都是 Java 标准库最好的改进之一。通过这套 API 可以在集合上建立用于转换的申明管道。
+     * 在 Java 9 中它会变得更好。Stream 接口中添加了 4 个新的方法：dropWhile, takeWhile, ofNullable。
+     * 还有个 iterate 方法的新重载方法，可以让你提供一个 Predicate (判断条件)来指定什么时候结束迭代：
+     * Takewhile方法：Java 8提供了根据给出的条件检查每个元素的过滤器功能。举例来说，假设要在流中找到所有小于20的数字，可能会出现一下情况：在其顺序执行过程中，只能得到过滤条件触发之前输入的数字，后面的输入全部都会被舍弃。也就是说当第一次过滤条件被触发时，会忽略剩余的输入然后执行返回或退出命令。
+     * ————————————————
+     * 版权声明：本文为CSDN博主「MonkeyKing_sunyuhua」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+     * 原文链接：https://blog.csdn.net/sunyuhua_keyboard/article/details/123125831
+     */
+    public static void test16(){
+        IntStream.iterate(0, i -> i <100, i -> i +1).forEach(System.out::println);
+        List<Integer> numberList1= Arrays.asList(1,3,5,8,10,20,35,2,5,7);
+        numberList1.stream().takeWhile(num->num<=20).forEach(System.out::println);
+        List<Integer> numberList2= Arrays.asList(1,3,5,8,10,20,35,2,5,7,21,22,3);
+        numberList2.stream().dropWhile(num->num<=20).forEach(System.out::println);
+    }
+
     public static void main(String[] args) {
 //        test9();
-        test14();
+        test16();
     }
 }
