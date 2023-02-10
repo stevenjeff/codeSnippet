@@ -13,6 +13,16 @@
           <release>17</release>
         </configuration>
       </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jlink-plugin</artifactId>
+            <version>3.1.0</version>
+            <extensions>true</extensions>
+            <configuration>
+                <!-- 配置启动脚本 -->
+                <launcher>data-man=org.fangrui/org.fangrui.Test</launcher>
+            </configuration>
+        </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -26,11 +36,11 @@
 	    <artifactId>trove4j</artifactId>
 	    <version>3.0.3</version>
 	</dependency>
-      <dependency>
-          <groupId>org.openjdk.jmh</groupId>
-          <artifactId>jmh-core</artifactId>
-          <version>1.18</version>
-      </dependency>
+<!--      <dependency>-->
+<!--          <groupId>org.openjdk.jmh</groupId>-->
+<!--          <artifactId>jmh-core</artifactId>-->
+<!--          <version>1.18</version>-->
+<!--      </dependency>-->
       <dependency>
           <groupId>org.openjdk.jmh</groupId>
           <artifactId>jmh-generator-annprocess</artifactId>
@@ -48,4 +58,5 @@
           <version>1.7.29</version>
       </dependency>
   </dependencies>
+
 </project>
